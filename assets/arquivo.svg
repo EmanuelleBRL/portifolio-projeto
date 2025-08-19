@@ -1,0 +1,50 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .track {
+        fill: none;
+        stroke: black;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .pad {
+        fill: black;
+        stroke: none;
+      }
+    </style>
+  </defs>
+
+  <path class="track" d="M 100,0 V 40 H 40 V 80 H 160 V 120 H 80 V 200"/>
+  <path class="track" d="M 0,100 H 80 V 40 H 120 V 160 H 40 V 180 H 200"/>
+
+  <path class="track" d="M 40,60 H 20"/>
+  <path class="track" d="M 60,40 V 20"/>
+  <path class="track" d="M 100,60 H 120 V 80 H 140"/>
+  <path class="track" d="M 80,140 V 160 H 60"/>
+  <path class="track" d="M 160,100 V 80"/>
+  <path class="track" d="M 120,140 H 180 V 180"/>
+  <path class="track" d="M 20,80 V 120 H 40"/>
+  <path class="track" d="M 180,120 V 60 H 140"/>
+
+  <circle class="pad" cx="100" cy="40" r="4"/>
+  <circle class="pad" cx="80" cy="120" r="4"/>
+  <circle class="pad" cx="40" cy="80" r="4"/>
+  <circle class="pad" cx="160" cy="120" r="4"/>
+  <circle class="pad" cx="80" cy="40" r="4"/>
+  <circle class="pad" cx="120" cy="160" r="4"/>
+  <circle class="pad" cx="40" cy="180" r="4"/>
+  <circle class="pad" cx="180" cy="180" r="3"/>
+  <circle class="pad" cx="20" cy="60" r="3"/>
+  <circle class="pad" cx="60" cy="20" r="3"/>
+  <circle class="pad" cx="140" cy="80" r="3"/>
+  <circle class="pad" cx="60" cy="160" r="3"/>
+  <circle class="pad" cx="160" cy="80" r="3"/>
+  <circle class="pad" cx="20" cy="120" r="3"/>
+  <circle class="pad" cx="140" cy="60" r="3"/>
+  
+  <circle class="pad" cx="100" cy="0" r="3"/>
+  <circle class="pad" cx="80" cy="200" r="3"/>
+  <circle class="pad" cx="0" cy="100" r="3"/>
+  <circle class="pad" cx="200" cy="180" r="3"/>
+</svg>

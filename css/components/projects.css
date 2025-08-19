@@ -1,0 +1,44 @@
+/* css/components/projects.css */
+
+.projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centraliza o card verticalmente */
+    padding: 8rem 4rem;
+    min-height: 80vh; /* Altura mínima para o efeito flutuante */
+}
+
+.projects .secondary-title {
+    margin-bottom: 6rem;
+}
+
+.projects__card-container {
+    width: 100%;
+    max-width: 70rem; /* Largura do card */
+    height: 40rem;     /* Altura do card */
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(92, 241, 218, 0.1);
+    border-radius: 0.8rem;
+    transition: all 0.3s ease;
+    animation: float 6s ease-in-out infinite; /* Animação de flutuação */
+}
+
+.projects__card-container:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-10px); /* Sobe um pouco mais no hover */
+    animation-play-state: paused; /* Pausa a flutuação no hover */
+}
+
+/* Animação que faz o card flutuar */
+@keyframes float {
+	0% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-20px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}

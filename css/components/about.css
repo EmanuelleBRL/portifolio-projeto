@@ -1,0 +1,132 @@
+/* Container da seção */
+.about { 
+    display: flex;
+    flex-direction: column; /* Organiza os itens em coluna */
+    align-items: center; /* Centraliza os itens horizontalmente */
+    gap: 8rem;
+    padding: 4rem 0;
+   
+}
+
+/* Título "Sobre mim" centralizado */
+.about .secondary-title {
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 10rem;
+}
+
+.about .tertiary-title {
+    color: var(--white);
+    text-align: left;
+    margin-bottom: 2.5rem;
+}
+
+/* Novo contêiner para as colunas, com Flexbox */
+.about__columns {
+    display: flex;
+    justify-content: center;
+    gap: 8rem;
+    max-width: 120rem; /* Limite de largura para o contêiner */
+    width: 100%;
+    padding: 0 8rem; /* Espaçamento lateral */
+    
+}
+
+/* Coluna da esquerda */
+.about__left {
+    flex: 1;
+    max-width: 55rem;
+    text-align: left;
+    margin-top: -5rem;
+}
+
+/* Parágrafos (alinhados à esquerda) */
+.about__left p {
+    justify-content:space-between;
+    text-align: left;
+    color: var(--white);
+    margin-bottom: 2rem;
+}
+
+/* Coluna da direita */
+.about__right {
+    flex: 1;
+    min-height: 40rem;
+    margin-top: -8rem;
+    width: 100%; 
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+
+}
+
+
+
+
+.about__right .about__image .emanuelle {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra o círculo sem distorcer */
+    border-radius: 0.5rem;
+    min-width: 25rem;
+    max-width: 100%;
+    margin-top: -11.2rem;
+}
+
+
+
+@media (max-width: 768px) {
+    .about {
+        flex-direction: column; /* Mude para column para empilhar em telas pequenas */
+        padding: 4rem 2rem;
+        gap: 4rem;
+    }
+    
+    .about__columns {
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .about__right {
+        /* Ajustes para o modo de celular */
+        width: 80%;
+        padding-bottom: 80%; /* Ajuste a porcentagem para mobile */
+        height: 0;
+    }
+}
+/* ---- Layout Responsivo para a Seção Sobre Mim ---- */
+
+@media (max-width: 1100px) {
+  .about__columns {
+    /* 1. Muda a direção das colunas de "lado a lado" para "uma em cima da outra" */
+    flex-direction: column;
+    align-items: center; /* Centraliza os itens horizontalmente */
+    gap: 4rem; /* Diminui o espaço entre a imagem e o texto */
+  }
+
+  .about__left {
+    /* 2. Centraliza o texto e ajusta a largura */
+    max-width: 70rem;
+    text-align: center;
+    line-height: 1.9rem; 
+    order: 2
+  }
+
+  .about__left p:not(:last-of-type) {
+        /* Diminui o espaço EMBAIXO de cada parágrafo */
+        margin-bottom: 1.5rem;
+    }
+
+  .about__right {
+    /* 3. Transforma o container da imagem em um círculo de tamanho fixo */
+    flex: none; /* Remove a flexibilidade para usar tamanho fixo */
+    width: 40rem;
+    height: 40rem;
+    min-height: auto; /* Reseta a altura mínima */
+    border-radius: 50%; /* Deixa o container redondo */
+    order: 1;
+  }
+}
+

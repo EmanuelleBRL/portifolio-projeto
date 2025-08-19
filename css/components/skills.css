@@ -1,0 +1,164 @@
+
+.skills {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 8rem;
+    gap: 8rem;
+}
+
+.skills .secondary-title {
+  
+    text-align: center;
+}
+
+.skills__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6rem;
+    width: 100%;
+}
+
+/* --- Grid HardSkills --- */
+.skills__hard-skills {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    max-width: 80rem;
+}
+
+/* Animação Grid */
+.skills__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+    position: relative; 
+    border-top: 2px solid rgba(92, 241, 219, 0.5);
+    border-bottom: 2px solid rgba(92, 241, 219, 0.5);
+    border-left: 1px solid rgba(92, 241, 219, 0.5);
+    border-right: 1px solid rgba(92, 241, 219, 0.5);
+
+    z-index: 1;
+    transition: all 0.3s ease;
+   
+    margin-top: -2px;
+    margin-bottom: -2px ;
+    margin-right: -1px;
+    margin-left: -1px;
+}
+
+.skills__item:hover {
+    z-index: 10; /* Garante que o item passe por cima dos vizinhos */
+}
+
+/* AS MÁSCARAS QUE CRIAM O EFEITO HOVER */
+.skills__item::before,
+.skills__item::after {
+    content: "";
+    display: block;
+    position: absolute;
+    background: var(--black); /* Cor de fundo do site */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Fica acima da borda, mas abaixo do ícone */
+    transition: all 0.3s ease;
+}
+
+/* Máscara vertical */
+.skills__item::before {
+    width: calc(100% + 2px);
+    height: 100%;
+}
+
+/* Máscara horizontal */
+.skills__item::after {
+    height: calc(100% + 2px);
+    width: 100%;
+}
+
+/* A ANIMAÇÃO QUANDO O MOUSE ESTÁ EM CIMA */
+.skills__item:hover::before {
+    height: 0%; /* Máscara vertical encolhe */
+}
+
+.skills__item:hover::after {
+    width: 0%; /* Máscara horizontal encolhe */
+}
+
+.skills__icon {
+    width: 5rem;
+    height: 5rem;
+    z-index: 2; /* Ícone fica na frente de tudo */
+}
+
+.skills__icon svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--gray);
+    transition: all 0.9s ease;
+}
+
+.skills__item:hover .skills__icon svg {
+    fill: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.skills__item p {
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--gray);
+    z-index: 2; /* Texto fica na frente de tudo */
+}
+
+/* --- LISTA DE SOFT SKILLS --- */
+.skills__soft-skills {
+    text-align: center;
+    
+}
+.skills__soft-skills .tertiary-title {
+    margin-bottom: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    font-size: 1.6rem;
+    color: var(--gray);
+}
+.skills__soft-skills ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+.skills__soft-skills li {
+    padding: 0.8rem 1.5rem;
+    background-color: var(--dark-secondary-color);
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+    transition: all 0.3s ease;
+}
+
+.skills__soft-skills li:hover {
+    background-color: var(--primary-color);
+    color: var(--black);
+    transform: translateY(-3px);
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .skills__hard-skills {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 480px) {
+    .skills__hard-skills {
+        grid-template-columns: 1fr;
+    }
+    .skills__soft-skills ul {
+        flex-direction: column;
+        align-items: center;
+    }
+}

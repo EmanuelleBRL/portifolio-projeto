@@ -1,0 +1,78 @@
+.navbar {
+    position: fixed;         
+    bottom: 5rem;             
+    left: 50%;                
+    transform: translateX(-50%);
+    
+    /*ver um jeito de arrumar o gap lateral*/
+    max-width: calc(37.5rem * var(--navbar-scale));
+
+    background-color: rgba(0, 0, 0, 0.8); 
+    padding: calc(1rem * var(--navbar-scale)) calc(0.5rem * var(--navbar-scale));     
+    border-radius: 1.4rem;
+    box-shadow: 0 0.2rem 0.6rem rgba(8, 212, 248, 0.4); 
+    backdrop-filter: blur(0.6rem); 
+    border: 0.1rem solid rgba(8, 212, 248, 0.2); 
+    
+    z-index: 9999;           
+    transition: box-shadow 0.3s ease, border 0.3s ease; 
+    
+    --mouse-x: 50%;           
+    --mouse-y: 50%;         
+}
+
+.navbar.glow-active {
+    box-shadow: 0 0.8rem 1.6rem rgba(8, 212, 248, 0.6);
+    border: 0.1rem solid rgba(8, 212, 248, 0.6);
+}
+
+.navbar.glow-active::before {
+    opacity: 1;
+}
+
+/* EFEITO DE BRILHO QUE SEGUE O MOUSE */
+
+
+/* ATIVA O BRILHO NO HOVER */
+
+/* CONTAINER INTERNO DA NAVBAR */
+.navbar .navbar__content {
+    display: flex;            /* Layout flexível */
+    justify-content: center;  /* Centraliza horizontalmente */
+    align-items: center;      /* Centraliza verticalmente */
+    gap: calc(2rem * var(--navbar-scale));               /* Espaçamento de 32px entre elementos */
+}
+
+/* LISTA DE LINKS */
+.navbar .navbar__content .navbar__links {
+    display: flex;            /* Layout flexível para os links */
+    gap: calc(0.2rem * var(--navbar-scale));               /* Espaçamento de 32px entre links */
+    align-items: center;      /* Alinha links verticalmente */
+    margin: 0;               /* Remove margem padrão da lista */
+    padding: 0;              /* Remove padding padrão da lista */
+}
+
+/* ITENS DA LISTA */
+.navbar .navbar__content .navbar__links li {
+    display: inline-block;    /* Itens em linha, mas permite padding/margin */
+}
+
+/* LINKS INDIVIDUAIS */
+.navbar .navbar__content .navbar__links a {
+    padding: calc(1rem * var(--navbar-scale)) calc(1rem * var(--navbar-scale));    /* Espaçamento interno: 16px vertical, 24px horizontal */
+    color: var(--white);      /* Cor branca (usando variável CSS) */
+    font-size: calc(1.4rem * var(--navbar-scale));/* Tamanho da fonte: 22.4px */
+    font-weight: 350;        /* Peso da fonte normal */
+    border-radius: 1rem;      /* Bordas arredondadas de 16px */
+    transition: all 0.3s ease; /* Animação suave de todas propriedades */
+    position: relative;       /* Para efeitos adicionais se necessário */
+    text-decoration: none;    /* Remove sublinhado do link */
+}
+
+/* EFEITO HOVER NOS LINKS */
+.navbar .navbar__content .navbar__links a:hover {
+    color: rgba(8, 212, 248, 1);           /* Muda cor para azul */
+    transform: translateY(-0.2rem);         /* Move 3.2px para cima */
+}
+
+

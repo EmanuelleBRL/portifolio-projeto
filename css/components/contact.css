@@ -1,0 +1,67 @@
+/* css/components/contact.css */
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8rem 4rem;
+}
+
+.contact .secondary-title {
+    margin-bottom: 4rem;
+}
+
+.contact__form {
+    width: 100%;
+    max-width: 60rem; /* Limita a largura do formulário */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Espaço entre os campos */
+}
+
+.contact__form input,
+.contact__form textarea {
+    width: 100%;
+    padding: 1.5rem;
+    background-color: var(--dark-secondary-color);
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    color: var(--white);
+    font-size: 1.6rem;
+    font-family: var(--font-family);
+    transition: all 0.3s ease;
+}
+
+.contact__form input::placeholder,
+.contact__form textarea::placeholder {
+    color: var(--gray);
+}
+
+.contact__form input:focus,
+.contact__form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.contact__form textarea {
+    min-height: 15rem; /* Altura mínima para a caixa de mensagem */
+    resize: vertical; /* Permite que o usuário redimensione na vertical */
+}
+
+.contact__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: var(--gray);
+    color: var(--black);
+    font-size: 1.6rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.contact__btn:hover {
+    background-color: var(--white);
+    transform: translateY(-3px);
+}

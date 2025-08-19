@@ -1,0 +1,114 @@
+/* HEADER SECTION */
+#header {
+  background: var(--black);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  gap: 4rem;
+  scroll-margin-top: 20rem;
+}
+
+/* Particles.js Background */
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1; 
+}
+
+.header-content {
+  width: 100%;
+  max-width: 120rem; 
+  padding: 0.4rem;
+  text-align: center;
+  z-index: 2;
+  margin-top: -4rem;
+}
+
+.header-content h1 {
+  margin-bottom: 0.25rem;
+}
+
+/* Animação */
+h1 {
+  animation: lights 6s 950ms linear infinite;
+}
+
+.subtitle {
+  animation: lights 6s 1400ms linear infinite;
+}
+/* Animação luz*/
+@keyframes lights {
+  0% {
+    color: var(--white);
+    text-shadow:
+      0 0 0.1em var(--white),
+      0 0 0.01em var(--white),
+      -1em -0.125em 0.2em transparent,
+      1em 0.125em 0.5em transparent;
+  }
+  
+  30% { 
+    color: var(--white);
+    text-shadow:
+      0 0 0.1em var(--primary-color),
+      0 0 0.03em var(--primary-color),
+      -0.5em -0.125em 0.25em rgba(255, 255, 255, 0.05),
+      0.5em 0.125em 0.25em rgba(96, 219, 241, 0.1);
+  }
+  
+  40% { 
+    color: var(--white);
+    text-shadow:
+      0 0 0.15em var(--secondary-color),
+      0 0 0.03em var(--secondary-color),
+      -0.25em -0.125em 0.125em rgba(255, 255, 255, 0.15),
+      0.25em 0.125em 0.125em rgba(92, 241, 218, 0.1);
+  }
+  
+  70% {
+    color: var(--white);
+    text-shadow:
+      0 0 0.2em var(--primary-color),
+      0 0 0.03em var(--primary-color),
+      0.5em -0.125em 0.25em rgba(255, 255, 255, 0.1),
+      -0.5em 0.125em 0.25em rgba(96, 219, 241, 0.2);
+  }
+  
+  100% {
+    color: var(--white);
+    text-shadow:
+      0 0 0.1em var(--white),
+      0 0 0.01em var(--white),
+      -1em -0.25em 0.5em transparent,
+      1em 0.125em 0.5em transparent;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 4.8rem;
+  }
+  
+  .subtitle {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 3.6rem;
+  }
+  
+  .subtitle {
+    font-size: 1.6rem;
+  }
+}
+
