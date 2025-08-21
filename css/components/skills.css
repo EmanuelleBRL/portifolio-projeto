@@ -25,7 +25,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     width: 100%;
-    max-width: 80rem;
+    max-width: 110rem;
 }
 
 /* Animação Grid */
