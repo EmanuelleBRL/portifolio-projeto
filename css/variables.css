@@ -6,7 +6,7 @@
   --secondary-color: #60DBF1   ;
   --dark-secondary-color: #3B8180 ;
   --tertiary-color: #a6b1e1;
-  --light-tertiary-color: #ffffffad;
+  --light-tertiary-color: rgba(255, 255, 255, 0.458);
   --text-color: #ffffff;
 
   --font-family: "Oxanium", sans-serif;
