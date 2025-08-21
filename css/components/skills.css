@@ -4,7 +4,8 @@
     flex-direction: column;
     align-items: center;
     padding: 4rem 8rem;
-    gap: 8rem;
+
+    margin-bottom: 10rem;
 }
 
 .skills .secondary-title {
@@ -118,6 +119,8 @@
 /* --- LISTA DE SOFT SKILLS --- */
 .skills__soft-skills {
     text-align: center;
+    margin-top: 13rem;    
+
     
 }
 .skills__soft-skills .tertiary-title {

@@ -1,0 +1,228 @@
+/* ===== CORREÇÃO URGENTE MOBILE ===== */
+
+/* 1. HEADER - CORRIGE O PROBLEMA DA IMAGEM GIGANTE */
+@media (max-width: 768px) {
+  
+  /* HEADER */
+  #header {
+    height: 100vh;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .header-content {
+    text-align: center;
+    z-index: 10;
+  }
+  
+  .main-title {
+    font-size: 3.5rem !important;
+    margin-bottom: 1rem;
+  }
+  
+  .subtitle {
+    font-size: 1.8rem !important;
+  }
+  
+  /* NAVBAR MOBILE */
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(9, 9, 8, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+  }
+  
+  .navbar__links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  .navbar__links li a {
+    font-size: 1.3rem;
+    padding: 0.5rem 1rem;
+  }
+
+  /* ABOUT - PRINCIPAL CORREÇÃO */
+  .about {
+    padding: 6rem 2rem 4rem; /* Espaço para navbar fixa */
+    gap: 3rem;
+    margin-top: 0;
+  }
+  
+  .about__columns {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+    max-width: none;
+    padding: 0;
+  }
+  
+  /* CORREÇÃO DA IMAGEM GIGANTE */
+  .about__right {
+    width: 25rem !important;
+    height: 25rem !important;
+    min-height: 25rem !important;
+    margin: 0 auto;
+    margin-top: 0 !important;
+    order: 1;
+    flex: none !important;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(92, 241, 218, 0.3) 0%, transparent 70%);
+  }
+  
+  .about__right .about__image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .about__right .about__image .emanuelle {
+    width: 25rem !important;
+    height: 25rem !important;
+    min-width: 25rem !important;
+    object-fit: cover;
+    border-radius: 50%;
+    transform: scale(1) !important;
+  }
+  
+  /* TEXTO ABOUT */
+  .about__left {
+    order: 2;
+    max-width: 100%;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .about__left h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+  
+  .about__left p {
+    font-size: 1.4rem !important;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+  }
+  
+  /* REDUZ PARTÍCULAS PROBLEMÁTICAS */
+  .about__right .particles-container .particle:nth-child(n+4) {
+    display: none !important;
+  }
+  
+  .about__left .particles-container .particle:nth-child(n+4) {
+    display: none !important;
+  }
+  
+  /* SKILLS */
+  .skills {
+    padding: 4rem 2rem;
+  }
+  
+  .skills__content {
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+  }
+  
+  .skills__hard-skills {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    width: 100%;
+  }
+  
+  /* PROJECTS */
+  .projects {
+    padding: 4rem 2rem;
+  }
+  
+  .projects__grid-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    width: 100%;
+  }
+  
+  /* CONTACT */
+  .contact {
+    padding: 4rem 2rem;
+  }
+  
+  .contact__form {
+    width: 100%;
+    max-width: 50rem;
+  }
+}
+
+/* 2. MOBILE MUITO PEQUENO (iPhone SE, etc) */
+@media (max-width: 480px) {
+  
+  .about {
+    padding: 6rem 1.5rem 3rem;
+  }
+  
+  .about__right {
+    width: 20rem !important;
+    height: 20rem !important;
+    min-height: 20rem !important;
+  }
+  
+  .about__right .about__image .emanuelle {
+    width: 20rem !important;
+    height: 20rem !important;
+    min-width: 20rem !important;
+  }
+  
+  .about__left h2 {
+    font-size: 2.2rem;
+  }
+  
+  .about__left p {
+    font-size: 0.2rem !important;
+  }
+  
+  .navbar__links {
+    gap: 1rem;
+  }
+  
+  .navbar__links li a {
+    font-size: 1.2rem;
+    padding: 0.3rem 0.8rem;
+  }
+}
+
+/* 3. CORREÇÃO GERAL DE OVERFLOW */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  
+  .max-width {
+    padding: 0 2rem;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  
+  /* Remove animações pesadas em mobile */
+  .about__right {
+    animation: none !important;
+  }
+  
+  .project-card {
+    animation: none !important;
+  }
+}

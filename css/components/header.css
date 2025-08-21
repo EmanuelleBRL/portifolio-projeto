@@ -34,6 +34,39 @@
   margin-bottom: 0.25rem;
 }
 
+
+.header-social-icons {
+    display: flex;
+    justify-content: flex-start; /* Alinha os ícones à esquerda, com o texto */
+    gap: 2rem; 
+    margin-top: 2.5rem; /* Espaço entre o último parágrafo e os ícones */
+}
+/* Estilizando os ícones SVG dentro dos links */
+.header-social-icons svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    /* Define a cor padrão para as partes preenchidas (fill) e as linhas (stroke) */
+    fill: var(--white); 
+    stroke: var(--white);
+    transition: all 0.3s ease;
+}
+
+/* Para o ícone do GitHub, algumas partes já estão definidas com fill="none" no HTML, 
+   então o stroke vai definir a cor. */
+.header-social-icons svg path[stroke="#000"] {
+    stroke: var(--white);
+  
+}
+/* No hover, mude a cor para a secundária */
+.header-social-icons a:hover svg {
+    fill: var(--white);
+    stroke: var(--secondary-color);
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px var(--secondary-color));
+}
+
+
+
 /* Animação */
 h1 {
   animation: lights 6s 950ms linear infinite;
@@ -42,6 +75,8 @@ h1 {
 .subtitle {
   animation: lights 6s 1400ms linear infinite;
 }
+
+
 /* Animação luz*/
 @keyframes lights {
   0% {

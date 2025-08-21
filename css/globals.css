@@ -4,6 +4,35 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
   font-family: var(--font-family);
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+.reduced-motion * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+}
+
+/* Para imagens especificamente */
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
+
+/* Desabilita seleção de texto também (opcional) */
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 html {
@@ -68,6 +97,12 @@ p:not(:last-of-type),
 .p:not(:last-of-type) {
   margin-bottom: 1rem;
 }
+
+*:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 4px;
+}
+
 
 .keyword {
   font-weight: 600; 
@@ -173,10 +208,13 @@ p:not(:last-of-type),
   }
 
   .max-width {
-    padding: 0 2rem;
+    padding: 0 1rem !important;
   }
-}
 
+  section { padding: 3rem 1rem !important; 
+
+}
+}
 @media only screen and (max-width: 425px) {
   h1 {
     font-size: 4.2rem;

@@ -4,43 +4,379 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Centraliza o card verticalmente */
     padding: 8rem 4rem;
-    min-height: 80vh; /* Altura mínima para o efeito flutuante */
+    scroll-margin-top: 0;
 }
 
 .projects .secondary-title {
     margin-bottom: 6rem;
 }
 
-.projects__card-container {
+/* --- GRIDE DE PROJETOS --- */
+.projects__grid-container {
+    display: grid;
+    /* Cria colunas responsivas: elas terão no mínimo 32rem e no máximo 1fr (fração do espaço) */
+    grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+    gap: 3rem; /* Espaço entre os cards */
     width: 100%;
-    max-width: 70rem; /* Largura do card */
-    height: 40rem;     /* Altura do card */
-    background-color: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(92, 241, 218, 0.1);
+    max-width: 120rem; /* Limita a largura máxima da grade */
+}
+
+/* --- CARD INDIVIDUAL --- */
+.project-card {
+    background-color: #0c151e;
+    border: 1px solid var(--dark-secondary-color);
     border-radius: 0.8rem;
-    transition: all 0.3s ease;
-    animation: float 6s ease-in-out infinite; /* Animação de flutuação */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    
+    /* 1. BRILHO SUTIL CONSTANTE (sem hover) */
+    box-shadow: 0 0 20px 0px rgba(92, 241, 218, 0.08);
+
+    /* 2. APLICAÇÃO DA ANIMAÇÃO DE FLUTUAÇÃO */
+   
+    
+    /* Transição suave para o hover */
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                border-color 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                box-shadow 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    will-change: transform;
 }
 
-.projects__card-container:hover {
+/* Para a flutuação não ficar sincronizada e parecer mais natural */
+.project-card:nth-child(2) {
+    animation-delay: -3.5s; /* Começa na metade da animação */
+}
+.project-card:nth-child(3) {
+    animation-delay: -1.8s;
+}
+.project-card:nth-child(4) {
+    animation-delay: -5s;
+}
+
+.project-card:hover {
+    /* O transform do hover é um pouco maior que o da flutuação para dar destaque */
+    transform: translateY(-10px);
     border-color: var(--primary-color);
-    transform: translateY(-10px); /* Sobe um pouco mais no hover */
-    animation-play-state: paused; /* Pausa a flutuação no hover */
+    box-shadow: 0 0 45px 0px rgba(92, 241, 218, 0.2);
+
+    /* Pausa a animação de flutuação durante o hover */
+    animation-play-state: paused;
 }
 
-/* Animação que faz o card flutuar */
-@keyframes float {
-	0% {
-		transform: translateY(0px);
-	}
-	50% {
-		transform: translateY(-20px);
-	}
-	100% {
-		transform: translateY(0px);
-	}
+/* --- CONTEÚDO DO CARD --- */
+.project-card__image {
+    width: 100%;
+    height: 20rem; /* Altura fixa para a imagem */
+    overflow: hidden;
+}
+
+.project-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem cobrir a área sem distorcer */
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-card__image img {
+    transform: scale(1.05); /* Efeito de zoom na imagem no hover */
+}
+
+.project-card__content {
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Faz este container crescer para ocupar o espaço do card */
+}
+
+.project-card__content .tertiary-title {
+    margin-bottom: 1.5rem;
+    line-height: 1.2; /* Ajuste para títulos longos */
+}
+
+.project-card__content p {
+    color: var(--gray);
+    flex-grow: 1; /* Empurra os botões para baixo */
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+    line-height: 1.6;
+}
+
+/* --- BOTÕES DO CARD --- */
+.project-card__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: auto;
+}
+
+/* Novo estilo para os botões secundários */
+.project-card__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: auto;
+}
+
+.btn.btn-secondary {
+    /* Layout e fonte */
+    padding: 1.2rem 2.5rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    
+    /* Cores e Fundo */
+    color: var(--primary-color);
+    background: transparent;
+    border: none; /* O botão em si não tem borda */
+
+    /* Propriedades essenciais para o efeito */
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    
+    /* Transição apenas da cor do texto */
+    transition: color 0.6s;
+}
+
+/* ::before e ::after criarão as bordas */
+.btn.btn-secondary::before,
+.btn.btn-secondary::after {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+}
+
+/* ::before cria as bordas de CIMA e de BAIXO */
+.btn.btn-secondary::before {
+    top: 0;
+    left: 0;
+    width: 0; /* Começa com largura 0 */
+    height: 100%;
+    border-top: 1px solid var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
+    
+    /* VELOCIDADE da animação das linhas horizontais */
+    transition: width 0.25s ease-in-out;
+}
+
+/* ::after cria as bordas da ESQUERDA e DIREITA */
+.btn.btn-secondary::after {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0; /* Começa com altura 0 */
+    border-left: 1px solid var(--primary-color);
+    border-right: 1px solid var(--primary-color);
+
+    /* VELOCIDADE da animação das linhas verticais (com um atraso) */
+    transition: height 0.3s ease-in-out 0.3s; /* O atraso de 0.3s faz ela esperar a outra terminar */
+}
+
+/* --- ANIMAÇÃO NO HOVER --- */
+
+/* No hover, o texto pode ficar mais brilhante, se quiser */
+.btn.btn-secondary:hover {
+    color: var(--white);
+}
+
+/* No hover, a largura das linhas horizontais vai a 100% */
+.btn.btn-secondary:hover::before {
+    width: 100%;
+}
+
+/* No hover, a altura das linhas verticais vai a 100% */
+.btn.btn-secondary:hover::after {
+    height: 100%;
 }
 
 
+/* ------------MODAL------ */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(9, 9, 8, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    /* Transição mais suave para o fundo */
+    transition: all 0.9s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* O card grande que aparece */
+.modal-content {
+    background-color: #0c151e;
+    border: 1px solid var(--primary-color);
+    border-radius: 0.8rem;
+    padding: 3rem;
+    position: relative;
+    width: 90%;
+    max-width: 90rem;
+    max-height: 85vh;
+    overflow-y: auto;
+    display: flex;
+    gap: 3rem;
+    
+    /* Estado inicial da animação */
+    transform: scale(0.92) translateY(15px);
+    opacity: 0.8; /* Começa um pouco transparente para um fade-in melhor */
+
+    /* Transição mais longa e fluida para o conteúdo */
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    
+    box-shadow: 0 0 15px 5px rgba(92, 241, 218, 0.1);
+    animation: glow 8s linear infinite alternate;
+}
+
+.modal-overlay.active .modal-content {
+    /* Estado final da animação */
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+/* Animação de brilho */
+@keyframes glow {
+    from { box-shadow: 0 0 15px 2px rgba(92, 241, 218, 0.2); }
+    to { box-shadow: 0 0 25px 8px rgba(96, 219, 241, 0.4); }
+}
+
+@keyframes subtle-float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-6px); /* Movimento bem sutil */
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+
+.modal-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 3.5rem;
+    color: var(--white);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-image {
+    flex: 1;
+    min-width: 30rem;
+}
+
+.modal-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+}
+
+.modal-text {
+    flex: 1;
+}
+
+.modal-text #modal-title {
+    margin-bottom: 2rem;
+}
+
+.modal-text #modal-desc {
+    color: var(--gray);
+    line-height: 1.7;
+    font-size: 1.6rem;
+}
+
+/* Impede o scroll da página principal quando o modal está aberto */
+body.modal-active {
+    overflow: hidden;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 35rem; /* Altura mínima para o container */
+}
+
+.carousel-images {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-images img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Garante que a imagem apareça inteira */
+    border-radius: 0.5rem;
+    
+    /* Animação de fade entre as imagens */
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    visibility: hidden;
+}
+
+.carousel-images img.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1; /* Garante que a imagem ativa fique na frente */
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    z-index: 2; /* Fica na frente das imagens */
+    border-radius: 50%;
+    line-height: 1;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-btn.prev {
+    left: 1rem;
+}
+
+.carousel-btn.next {
+    right: 1rem;
+}
+
+
+/* Responsividade para o modal em telas menores */
+@media (max-width: 768px) {
+    .modal-content {
+        flex-direction: column;
+        padding: 4rem 2rem 2rem 2rem; /* Mais espaço no topo para o botão de fechar */
+    }
+}
